@@ -1,0 +1,55 @@
+[build-system]
+requires = ['setuptools >= 67']
+build-backend = 'setuptools.build_meta'
+
+
+[project]
+name = "HumOil"
+description = 'Southeast University Physics Laboratory Python Package'
+dynamic = ['version']
+readme = "README.md"
+license-files = ['LICENSE']
+maintainers = [
+    { name = "", email = "" },
+    { name = "", email = "" },
+    { name = "", email = "" },
+]
+classifiers = [
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Topic :: Scientific/Engineering :: Physics',
+]
+requires-python = ">=3.10"
+# wheels for the required Python version:
+dependencies = [
+    'streamlit',
+    'streamlit_change_language',
+    'streamlit-navigation-bar',
+    'pysr',
+    'numpy==1.26.4',
+    'scikit-learn==1.6.1',
+    'reportlab==4.4.4',
+    'kaleido==0.1.0',
+    'plotly==5.18.0',
+    'opencv-python>=4.8.0,<5',
+    'Pillow>=10.0.0',
+]
+
+
+[project.scripts]
+humoil = "humoil.cli.main:main"
+
+
+[tool.setuptools.dynamic]
+version = { attr = 'humoil.__version__' }
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+[tool.setuptools.package-data]
+humoil = ["data/*", "images/*"]
