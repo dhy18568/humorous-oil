@@ -1017,9 +1017,15 @@ def render_tab_regress():
 
     _render_symbolic_model_guide()
 
+    include_reference = st.checkbox(
+        "使用根目录测试数据",
+        value=not has_user_data,
+        key="regress_include_reference",
+        help="没有测量数据时用根目录 oil_drop_reference.csv 继续回归；已有测量数据时可作为补充数据。")
+
     with st.form("discovery_regression_form", border=True):
         st.subheader("第二步：选择模型并执行符号回归")
-        col1, col2, col3 = st.columns(3)
+        col1, col2 = st.columns(2)
         with col1:
             fall_distance_mm = st.number_input("计时距离/mm",
                                                min_value=0.10,
@@ -1032,11 +1038,6 @@ def render_tab_regress():
                                                 max_value=10.00,
                                                 value=5.00,
                                                 step=0.10)
-        with col3:
-            include_reference = st.checkbox(
-                "使用根目录测试数据",
-                value=not has_user_data,
-                help="没有测量数据时用 D:\\GitHub\\humoil\\oil_drop_reference.csv 继续回归；已有测量数据时可作为补充数据。")
 
         col1, col2, col3 = st.columns(3)
         with col1:

@@ -649,7 +649,8 @@ def render_tab_classify():
     include_reference = st.checkbox(
         "使用根目录测试数据",
         value=include_reference_default,
-        help="没有测量数据时用 D:\\GitHub\\humoil\\oil_drop_reference.csv 继续流程；已有测量数据时可取消勾选，仅分析实测数据。",
+        key="classify_include_reference",
+        help="没有测量数据时用根目录 oil_drop_reference.csv 继续流程；已有测量数据时可取消勾选，仅分析实测数据。",
     )
 
     if not has_user_data and not include_reference:
